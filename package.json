@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/joaopmarcal/whatsApp-clone#readme",
   "dependencies": {
+    "firebase": "^7.16.0",
     "pdfjs-dist": "2.0.489",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^2.11.5"
