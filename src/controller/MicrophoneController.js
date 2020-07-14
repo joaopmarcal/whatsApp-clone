@@ -1,4 +1,5 @@
 import {ClassEvent} from "../util/ClassEvent";
+import {Format} from "../util/Format";
 
 export class MicrophoneController extends ClassEvent{
 
@@ -71,21 +72,10 @@ export class MicrophoneController extends ClassEvent{
 
                 console.log('file',file);
 
-                let reader = new FileReader();
-
-                reader.onload = e => {
-
-                    let audio = new Audio(reader.result);
-
-                    audio.play();
-
-                }
-
-                reader.readAsDataURL(file);
-
             });
 
             this._mediaRecorder.start();
+            this.startTimer();
 
         }
 
@@ -97,8 +87,27 @@ export class MicrophoneController extends ClassEvent{
 
             this._mediaRecorder.stop();
             this.stop();
+            this.stopTimer();
 
         }
+
+    }
+
+    startTimer(){
+
+        let start = Date.now();
+
+        this._recordMicrophoneInterval = setInterval(()=>{
+
+            this.trigger('recordtimer', (Date.now() - start));
+
+        }, 100);
+
+    }
+
+    stopTimer(){
+
+        clearInterval(this._recordMicrophoneInterval);
 
     }
 
