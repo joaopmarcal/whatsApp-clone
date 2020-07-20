@@ -53,4 +53,14 @@ export class User extends Model {
 
     }
 
+    addContact(contact){
+
+        User.getRef()
+            .doc(this.email)
+            .collection('contacts')
+            .doc(btoa(contact.email))
+            .set(contact.toJSON());
+
+    }
+
 }
