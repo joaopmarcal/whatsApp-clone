@@ -55,7 +55,7 @@ export class User extends Model {
 
     addContact(contact){
 
-        User.getRef()
+        return User.getRef()
             .doc(this.email)
             .collection('contacts')
             .doc(btoa(contact.email))

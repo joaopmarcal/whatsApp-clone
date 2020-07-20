@@ -213,7 +213,7 @@ export class WhatsAppController {
 
         });
 
-        this.el.formPanelAddContact.on('submit', e=>{
+        this.el.formPanelAddContact.on('submit', e=> {
 
             e.preventDefault();
 
@@ -224,18 +224,19 @@ export class WhatsAppController {
             contact.on('datachange', data=>{
 
                 if (data.name){
+
                     this._user.addContact(contact).then(()=>{
 
                        this.el.btnClosePanelAddContact.click();
                        console.info('Contato adicionado');
+
                     });
+
                 } else {
                     console.error('Usuário não foi encontrado.');
                 }
 
             });
-
-            this._user.addContact();
 
         });
 
